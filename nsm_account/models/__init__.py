@@ -19,6 +19,6 @@
 #
 ##############################################################################
 
-import res_partner
-import account
-import account_invoice
+from . import res_partner
+from . import account
+from . import account_invoice

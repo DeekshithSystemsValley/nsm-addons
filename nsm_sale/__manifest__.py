@@ -26,7 +26,7 @@
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
-        'data/mail_template_data.xml',
+        # 'data/mail_template_data.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

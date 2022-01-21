@@ -277,7 +277,7 @@ msgstr "Bestaand"
 #. module: nsm_supplier_portal
 #: field:account.invoice,data_file:0
 #: field:account.invoice,data_supplier_terms_file_name:0
-#: field:base.config.settings,data_fname:0 field:res.company,data_fname:0
+#: field:res.config.settings,data_fname:0 field:res.company,data_fname:0
 msgid "File Name"
 msgstr "Bestandsnaam"
 
@@ -719,7 +719,7 @@ msgid "Untaxed Amount"
 msgstr "Netto bedrag"
 
 #. module: nsm_supplier_portal
-#: field:base.config.settings,supplier_terms:0
+#: field:res.config.settings,supplier_terms:0
 msgid "Upload Supplier Invoice Reuse-authorization File"
 msgstr "Upload de PDF met hergebruik voorwaarden "
 
@@ -782,8 +782,8 @@ msgstr "bij"
 #: code:_description:0
 #: model:ir.model,name:nsm_supplier_portal.model_base_config_settings
 #, python-format
-msgid "base.config.settings"
-msgstr "base.config.settings"
+msgid "res.config.settings"
+msgstr "res.config.settings"
 
 #. module: nsm_supplier_portal
 #: view:res.partner:0

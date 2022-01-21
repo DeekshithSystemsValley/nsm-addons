@@ -39,7 +39,7 @@
                     </field>
                     <field name="email" position="after">
                         <field name="phone"/>
-                        <field name="sector_id"/>
+                        <field name="industry_id"/>
                         <field name="is_company"/>
                         <field name="parent_id"/>
                         <field name="firstname"/>

@@ -56,7 +56,7 @@
         <field name="code">
             action = model.button_merge_attachments()</field>
     </record>
-
+<!-- 
     <record id="run_invoice_merge_pdf_action" model="ir.values">
         <field name="model_id" ref="account.model_account_invoice" />
         <field name="name">Merge Attachments</field>
@@ -64,7 +64,7 @@
         <field name="key">action</field>
         <field name="model">account.invoice</field>
         <field name="value" eval="'ir.actions.server,' + str(ref('invoice_merge_pdf_server_action'))" />
-    </record>
+    </record> -->
 
 
 

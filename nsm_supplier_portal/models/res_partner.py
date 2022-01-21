@@ -29,6 +29,7 @@ class Partner(models.Model):
                                             'Titles/Departments', copy=True)
     product_category_ids = fields.Many2many('product.category','partner_category_rel','partner_id','product_category_id',
                                             'Cost Categories', copy=True)
+    fax = fields.Char(string="Fax")
 
 
     @api.model

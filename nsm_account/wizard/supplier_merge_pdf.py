@@ -22,8 +22,10 @@
 from odoo import api, fields, models, _
 
 import base64
-import StringIO
-import pyPdf
+import io
+# import StringIO
+# import pyPdf
+import PyPDF2
 
 class InvoicMergePdf(models.TransientModel):
     _name = 'supplier.invoice.merge.pdf'
@@ -39,7 +41,7 @@ class InvoicMergePdf(models.TransientModel):
 
         final_pdf = []
         att_pool = self.env['ir.attachment']
-        output = pyPdf.PdfFileWriter()
+        output = PyPDF2.PdfFileWriter()
 
         for invoice in self.env['account.invoice'].browse(invoice_ids):
             flg = False
@@ -51,8 +53,8 @@ class InvoicMergePdf(models.TransientModel):
                     continue
                 if att_data.datas_fname and att_data.datas and att_data.datas_fname.split(".")[-1].upper() == "PDF":
                     data = base64.decodestring(att_data.datas)
-                    buffer_file = StringIO.StringIO(data)
-                    input_attachment = pyPdf.PdfFileReader(buffer_file)
+                    buffer_file = io.BytesIO(data)
+                    input_attachment = PyPDF2.PdfFileReader(buffer_file)
                     flg = True
                     for page in range(input_attachment.getNumPages()):
                         output.addPage(input_attachment.getPage(page))
@@ -60,12 +62,12 @@ class InvoicMergePdf(models.TransientModel):
             if not flg:
                 result = self.env['report'].get_pdf([invoice.id], "nsm_account.report_blank_invoice")
 
-                buffer_file = StringIO.StringIO(result)
-                input_report = pyPdf.PdfFileReader(buffer_file)
+                buffer_file = io.BytesIO(result)
+                input_report = PyPDF2.PdfFileReader(buffer_file)
                 for page in range(input_report.getNumPages()):
                     output.addPage(input_report.getPage(page))
 
-        outputStream = StringIO.StringIO()
+        outputStream = io.BytesIO()
         output.write(outputStream)
         res = outputStream.getvalue().encode('base64')
         outputStream.close()

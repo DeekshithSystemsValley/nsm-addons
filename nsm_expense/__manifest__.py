@@ -49,7 +49,7 @@ defined.
     ],
     'data'    : ["security/ir_rule.xml",
                  "views/hr_expense_view.xml",
-                 "views/res_company_view.xml",
+                 # "views/res_company_view.xml",
     ],
     'demo' : [],
     'installable': True

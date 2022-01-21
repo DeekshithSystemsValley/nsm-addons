@@ -9,7 +9,7 @@
                 <sheet>
                     <group>
                         <group>
-                            <label string="Notify following customers by e-mail?"/>
+                            <label string="Notify following customers by e-mail?" for="value"/>
                             <field name="value" nolabel="1"/>
                         </group>
                         <group>

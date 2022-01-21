@@ -1,4 +1,4 @@
 # -*- encoding: utf-8 -*-
-import mail_followers_config
-import mail_message
-import res_partner
+from . import mail_followers_config
+from . import mail_message
+from . import res_partner

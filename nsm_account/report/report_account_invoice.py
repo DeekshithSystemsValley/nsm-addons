@@ -20,33 +20,33 @@
 
 import time
 from datetime import datetime
-from openerp.report import report_sxw
+# from openerp.report import report_sxw
 
-class account_invoice(report_sxw.rml_parse):
+# class account_invoice(report_sxw.rml_parse):
 
-    def __init__(self, cr, uid, name, context=None):
-        super(account_invoice, self).__init__(cr, uid, name, context=context)
-        self.localcontext.update({
-            'time': time,
-            'get_date': self.get_date,
-            'new_date': self.new_date,
-        })
+#     def __init__(self, cr, uid, name, context=None):
+#         super(account_invoice, self).__init__(cr, uid, name, context=context)
+#         self.localcontext.update({
+#             'time': time,
+#             'get_date': self.get_date,
+#             'new_date': self.new_date,
+#         })
 
-    def get_date(self, date_invoice):
-        if date_invoice in ['False' or False]:
-            return False
-        return datetime.strptime(date_invoice, "%Y-%m-%d").strftime('%d-%m-%Y')
+#     def get_date(self, date_invoice):
+#         if date_invoice in ['False' or False]:
+#             return False
+#         return datetime.strptime(date_invoice, "%Y-%m-%d").strftime('%d-%m-%Y')
 
-    def new_date(self, date_due):
-        if date_due in ['False' or False]:
-            return False
-        return datetime.strptime(date_due, "%Y-%m-%d").strftime('%d-%m-%Y')
+#     def new_date(self, date_due):
+#         if date_due in ['False' or False]:
+#             return False
+#         return datetime.strptime(date_due, "%Y-%m-%d").strftime('%d-%m-%Y')
 
-report_sxw.report_sxw(
-    'report.account.invoice.customNSM',
-    'account.invoice',
-    'addons/nsm_account/report/report_account_invoice_print.rml',
-    parser=account_invoice,
-)
+# report_sxw.report_sxw(
+#     'report.account.invoice.customNSM',
+#     'account.invoice',
+#     'addons/nsm_account/report/report_account_invoice_print.rml',
+#     parser=account_invoice,
+# )
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

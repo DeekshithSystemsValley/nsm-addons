@@ -36,7 +36,7 @@
                     <xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='discount']" position="attributes">
                         <attribute name="string">Agency Discount (%)</attribute>
                     </xpath>
-                    <xpath expr="//page[@name='other_info']/group[1]/group[2]/field[@name='name']" position="replace">
+                    <xpath expr="//page[@name='other_info']/group[1]/group[2]/field[@name='origin']" position="after">
                         <field name="user_id"/>
                         <field name="team_id"/>
                     </xpath>

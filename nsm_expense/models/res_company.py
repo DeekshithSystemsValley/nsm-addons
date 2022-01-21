@@ -25,6 +25,6 @@ class Company(models.Model):
     _inherit = 'res.company'
 
     decl_journal_id = fields.Many2one('account.journal', 'Declaration Journal',
-                                      domain=[('type','=','purchase')], required=True)
+                                      domain=[('type','=','purchase')], required=False)
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

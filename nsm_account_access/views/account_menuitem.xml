@@ -85,10 +85,10 @@
             <field name="groups_id" eval="[(4,ref('account.group_account_invoice')),(4,ref('sale_advertising_order.group_traffic_user'))]"/>
         </record>
 
-        <record model='ir.ui.view' id='purchase.res_partner_view_purchase_account_buttons'>
+        <!-- <record model='ir.ui.view' id='purchase.res_partner_view_purchase_account_buttons'>
             <field name="groups_id" eval="[(4,ref('account.group_account_invoice')),(4,ref('sale_advertising_order.group_traffic_user'))]"/>
         </record>
-
+ -->
         <record model='ir.ui.view' id='account.partner_view_button_contracts_count'>
             <field name="groups_id" eval="[(4,ref('account.group_account_invoice')),(4,ref('sale_advertising_order.group_traffic_user'))]"/>
         </record>
@@ -102,9 +102,9 @@
                 <xpath expr="//button[@name='action_invoice_open'][1]" position="attributes">
                     <attribute name="groups">account.group_account_invoice,sale_advertising_order.group_traffic_user</attribute>
                 </xpath>
-                <xpath expr="//button[@name='action_invoice_open'][2]" position="attributes">
+                <!-- <xpath expr="//button[@name='action_invoice_open'][2]" position="attributes">
                     <attribute name="groups">account.group_account_invoice,sale_advertising_order.group_traffic_user</attribute>
-                </xpath>
+                </xpath> -->
                 <xpath expr="//button[@name='%(account.action_account_invoice_refund)d']" position="attributes">
                     <attribute name="groups">account.group_account_invoice,sale_advertising_order.group_traffic_user</attribute>
                 </xpath>

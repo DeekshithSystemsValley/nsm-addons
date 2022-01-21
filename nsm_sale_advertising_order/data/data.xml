@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <!--Email template -->
-    <record id="account_credit_control.email_template_credit_control_base" model="mail.template">
+<!--     <record id="account_credit_control.email_template_credit_control_base" model="mail.template">
         <field name="name">Credit Control Email</field>
         <field name="email_from">${object.partner_id.company_id.email or ''}</field>
         <field name="subject">Credit Control:
@@ -28,7 +28,7 @@
             <p>debiteuren@newskoolmedia.nl</p>
             % endif}
         ]]></field>
-    </record>
+    </record> -->
 
     <!--Email template -->
     <record id="sale_advertising_order.email_template_edi_sale_adver" model="mail.template">
@@ -39,7 +39,7 @@
         <field name="reply_to">${(object.user_id.email and '%s &lt;%s&gt;' % (object.user_id.name, object.user_id.email) or '')|safe}</field>
         <field name="model_id" ref="sale.model_sale_order"/>
         <field name="auto_delete" eval="True"/>
-        <field name="report_template" ref="sale.report_sale_order"/>
+        <!-- <field name="report_template" ref="sale.report_sale_order"/> -->
         <field name="report_name">${(object.name or '').replace('/','_')}${object.state == 'draft' and '_draft' or ''}</field>
         <field name="lang">${object.partner_id.lang}</field>
         <field name="body_html"><![CDATA[

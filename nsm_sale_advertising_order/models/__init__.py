@@ -20,12 +20,12 @@
 #
 ##############################################################################
 
-import sale_advertising
-import advertising_issue
-import product
-import circulation_type
-import credit_control_run
-import proof_delivery_list
+from . import sale_advertising
+from . import advertising_issue
+from . import product
+from . import circulation_type
+# from . import credit_control_run
+from . import proof_delivery_list
 
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

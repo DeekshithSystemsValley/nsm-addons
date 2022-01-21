@@ -34,9 +34,12 @@
                 'account_invoice_2step_validation',
                 'stock',
                 'nsm_account',
+                'account',
+                'product',
                 'account_invoice_supplier_ref_unique',
                 'account_invoice_check_total',
-                'web_readonly_bypass'],
+                # 'web_readonly_bypass'
+                ],
     'data': [
         "data/data.xml",
         "data/auth_signup_send_mail_data.xml",
@@ -50,7 +53,7 @@
         "views/product_view.xml",
         "views/account_analytic_view.xml",
         "views/menu_view.xml",
-        "views/res_config_view.xml",
+        # "views/res_config_view.xml",
         "views/res_company_view.xml",
         "views/sales_team_view.xml",
 

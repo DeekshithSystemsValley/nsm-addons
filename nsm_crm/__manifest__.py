@@ -19,7 +19,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['sale_advertising_order', 'partner_sector', 'partner_firstname'],
+    'depends': ['sale_advertising_order', 'partner_industry_parent', 'partner_firstname'],
 
     # always loaded
     'data': [

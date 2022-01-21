@@ -11,6 +11,7 @@
           <attribute name="invisible">1</attribute>
         </xpath>
         <xpath expr="//field[@name='move_name']" position="replace">
+          <field name="move_name"  invisible="1"/>
         </xpath>
       </field>
     </record>
@@ -53,6 +54,7 @@
         <field name="inherit_id" ref="account_operating_unit.invoice_supplier_form_ou" />
         <field name="arch" type="xml">
           <xpath expr="//field[@name='operating_unit_id']" position="replace">
+            <field name="operating_unit_id" invisible="1"/>
           </xpath>
         </field>
     </record>
@@ -62,7 +64,8 @@
       <field name="model">account.invoice</field>
       <field name="inherit_id" ref="account.invoice_supplier_form"/>
       <field name="arch" type="xml">
-        <xpath expr="//group/field[@name='account_id']" position="replace">
+        <xpath expr="//group/field[@name='account_id']" position="attributes">
+          <attribute name="invisible">1</attribute>
         </xpath>
         <xpath expr="//field[@name='reference']" position="after">
           <field name="operating_unit_id" required="1"

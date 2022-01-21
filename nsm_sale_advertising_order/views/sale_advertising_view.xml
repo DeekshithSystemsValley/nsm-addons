@@ -47,25 +47,25 @@
                 <xpath expr="//tree/field[@name='title']" position="after">
                     <field name="adv_issue"/>
                 </xpath>
-                <xpath expr="//field[@name='order_line']/form/group[1]/group[1]/field[@name='product_template_id']" position="before">
+                <xpath expr="//field[@name='order_line']/form/group[2]/group[1]/field[@name='product_template_id']" position="before">
                     <field name="product_template_domain" invisible="1"/>
                 </xpath>
-                <xpath expr="//field[@name='order_line']/form/group[1]/group[1]/field[@name='product_template_id']" position="attributes">
+                <xpath expr="//field[@name='order_line']/form/group[2]/group[1]/field[@name='product_template_id']" position="attributes">
                     <attribute name="domain">product_template_domain</attribute>
                 </xpath>
-                <xpath expr="//field[@name='order_line']/form/group[1]/group[2]/label[@for='discount']" position="attributes">
+                <!-- <xpath expr="//field[@name='order_line']/form/group[1]/group[2]/label[@for='discount']" position="attributes">
                     <attribute name="string">Agency Discount (%)</attribute>
-                </xpath>
+                </xpath> -->
                 <xpath expr="//field[@name='order_line']/tree/field[@name='discount_dummy']" position="attributes">
                     <attribute name="string">Agency Discount (%)</attribute>
                 </xpath>
-                <xpath expr="//field[@name='order_line']/form/group[1]/group[2]/field[@name='subtotal_before_agency_disc']" position="attributes">
+                <xpath expr="//field[@name='order_line']/form/group[2]/group[2]/field[@name='subtotal_before_agency_disc']" position="attributes">
                     <attribute name="string">SBAD</attribute>
                 </xpath>
                 <xpath expr="//field[@name='order_line']/tree/field[@name='subtotal_before_agency_disc']" position="attributes">
                     <attribute name="string">SBAD</attribute>
                 </xpath>
-                <xpath expr="//form/group[1]/group[1]/field[@name='deadline']" position="attributes">
+                <xpath expr="//field[@name='order_line']/form/group[1]/group[2]/field[@name='deadline']" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </xpath>
                 <xpath expr="//field[@name='order_line']/form/group[3]/group[3]" position="attributes">

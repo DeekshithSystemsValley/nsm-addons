@@ -70,10 +70,10 @@
                     <field name="issue_date"/>
                     <field name="proof_parent_name"/>
                     <group expand="0" string="Group By">
-                        <filter string="Title" domain="[]" context="{'group_by':'title'}"/>
-                        <filter string="Issue Date" icon="terp-personal" domain="[]" context="{'group_by':'issue_date'}"/>
-                        <filter string="Order Line" domain="[]" context="{'group_by':'line_id'}"/>
-                        <filter string="Partner" domain="[]" context="{'group_by':'proof_number_payer'}"/>
+                        <filter string="Title" name="title" domain="[]" context="{'group_by':'title'}"/>
+                        <filter string="Issue Date" name="issue_date" icon="terp-personal" domain="[]" context="{'group_by':'issue_date'}"/>
+                        <filter string="Order Line" name="order_lines" domain="[]" context="{'group_by':'line_id'}"/>
+                        <filter string="Partner" name="partner_id" domain="[]" context="{'group_by':'proof_number_payer'}"/>
                     </group>
                 </search>
             </field>

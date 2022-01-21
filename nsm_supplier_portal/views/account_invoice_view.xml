@@ -91,29 +91,25 @@
         <record id="view_custom_supplier_invoice_form" model="ir.ui.view">
             <field name="name">account.invoice.form</field>
             <field name="model">account.invoice</field>
-            <field name="type">form</field>
-            <field name="priority" eval="2000"/>
             <field name="arch" type="xml">
-            <form string="Enter Your Invoice" version="7.0"  create="false">
+            <form string="Enter Your Invoice">
                 <header>
                     <button name="action_portal_submit" string="Submit" class="oe_highlight" type="object" attrs="{'invisible': [('state','!=', 'portalcreate')]}"/>
-                    <button name="%(account.action_account_invoice_refund)d" type='action' string='Ask Refund'
-                            attrs="{'invisible': ['|',('type', 'in', ['in_refund','out_refund']),('state','not in',('open','paid'))]}"
-                            invisible="1"/>
+                    <button name="%(account.action_account_invoice_refund)d" type='action' string='Ask Refund' attrs="{'invisible': ['|',('type', 'in', ['in_refund','out_refund']),('state','not in',('open','paid'))]}" invisible="1"/>
                     <button name="action_invoice_cancel" type="object" states="draft" string="Cancel Invoice" groups="account.group_account_invoice"/>
-                    <button name="action_invoice_draft" states="cancel" string="Set to Draft" type="object" />
-                    <!--<button name='(account.action_account_state_open)d' type='action' string='Re-Open'  attrs="{'invisible':['|', ('state','&lt;&gt;','paid'), ('reconciled', '=', True)]}" help="This button only appears when the state of the invoice is 'paid' (showing that it has been fully reconciled) and auto-computed boolean 'reconciled' is False (depicting that it's not the case anymore). In other words, the invoice has been dereconciled and it does not fit anymore the 'paid' state. You should press this button to re-open it and let it continue its normal process after having resolved the eventual exceptions it may have created." invisible="1"/>-->
-                    <field name="state" widget="statusbar" statusbar_visible="portalcreate,draft,auth,open,paid" statusbar_colors='{"proforma":"blue","proforma2":"blue"}'/>
+                    <button name="action_invoice_draft" states="cancel" string="Set to Draft" type="object"/>
+                    <field name="state" widget="statusbar"/>
                 </header>
                 <sheet string="Supplier Invoice">
                     <div class="oe_title">
                         <h1>
-                            <label string="Draft Invoice" attrs="{'invisible': ['|', '|', ('state','&lt;&gt;','draft'),('type','&lt;&gt;','in_invoice'),  ('is_submitted','=', False), ]}"/>
-                            <label string="Submitted Invoice" attrs="{'invisible': ['|', '|', ('state','&lt;&gt;','draft'), ('type','in ',['in_refund','in_invoice']), ('is_portal','!=', True), ]}"/>
-                            <field name="supplier_ref_related" class="oe_inline" attrs="{'invisible': ['|', ('state','&lt;&gt;','draft'), ('is_submitted','!=', True)]}" readonly="1"/>
-                            <label string="Draft Refund" attrs="{'invisible': ['|','|', ('state','&lt;&gt;','draft'), ('type','&lt;&gt;','in_refund'), ('is_submitted','=', True)]}"/>
-                            <label string="Invoice" attrs="{'invisible': ['|',('state', '=', 'draft'), ('type','&lt;&gt;','in_invoice')]}"/>
-                            <label string="Refund" attrs="{'invisible': ['|',('state', '=', 'draft'), ('type','&lt;&gt;','in_refund')]}"/>
+                            <!-- uncomment after adding for="field_name" -->
+                            <!-- <label string="Draft Invoice" attrs="{'invisible': ['|', ('state','=','draft'),'|',('type','=','in_invoice'),('is_submitted','=', False)]}"/>
+                            <label string="Submitted Invoice" attrs="{'invisible': ['|',('state','=','draft'),'|',('type','in ',['in_refund','in_invoice']), ('is_portal','!=', True)]}"/>
+                            <field name="supplier_ref_related" class="oe_inline" attrs="{'invisible': ['|', ('state','=','draft'), ('is_submitted','!=', True)]}" readonly="1"/>
+                            <label string="Draft Refund" attrs="{'invisible': ['|', ('state','=','draft'),'|',('type','=','in_refund'), ('is_submitted','=', True)]}"/>
+                            <label string="Invoice" attrs="{'invisible': ['|',('state', '=', 'draft'), ('type','=','in_invoice')]}"/>
+                            <label string="Refund" attrs="{'invisible': ['|',('state', '=', 'draft'), ('type','=','in_refund')]}"/> -->
                             <field name="number" class="oe_inline"  attrs="{'invisible': [('state', '=', 'draft')]}"/>
                             <field name="is_submitted" invisible="1"/>
                             <field name="is_portal" invisible="1"/>
@@ -139,10 +135,10 @@
                             <field name="supplier_invoice_number" required="1"
                                    string="Enter Your Invoice Number"/>
                             <field name="product_category" string="Invoice Category"  required="True"
-                               options='{"no_create": True, "no_create_edit": True, "no_open": True}' attrs="{'readonly': [('state','!=','portalcreate')],}"/>
+                               options='{"no_create": True, "no_create_edit": True, "no_open": True}' attrs="{'readonly': [('state','!=','portalcreate')]}"/>
                             <field name="main_account_analytic_id" string="Title/Department"
                                options='{"no_create": True, "no_create_edit": True, "no_open": True}' required="True"
-                               attrs="{'readonly': [('state','!=','portalcreate')],}"
+                               attrs="{'readonly': [('state','!=','portalcreate')]}"
                                context="{'tree_view_ref': 'nsm_supplier_portal.view_account_analytic_account_list_portal'}"/>
 
                             <field name="operating_unit_id" groups="operating_unit.group_multi_operating_unit" attrs="{'readonly': [('state','!=','portalcreate')]}" options='{"no_create": True, "no_create_edit": True, "no_open": True}'/>
@@ -150,11 +146,6 @@
                             <field name="team_id" string="Redactie" widget="selection" readonly="1" invisible="1"/>
                             <field name="fiscal_position_id" widget="selection" invisible="1"/>
                             <field name="origin" invisible="1"/>
-                            <!--label for="reference_type"/>
-                            <div>
-                                <field name="reference_type" class="oe_inline oe_edit_only" invisible="1"/>
-                                <field name="reference" class="oe_inline" invisible="1"/>
-                            </div-->
                         </group>
                         <group>
                             <field name="date_invoice" invisible="1"/>
@@ -315,12 +306,14 @@
                 <sheet string="Supplier Invoice">
                     <div class="oe_title">
                         <h1>
-                            <label string="Draft Invoice" attrs="{'invisible': ['|', ('state','&lt;&gt;','draft'), ('is_submitted','=', True)]}"/>
-                            <label string="Submitted Invoice" attrs="{'invisible': ['|', ('state','&lt;&gt;','draft'), ('is_submitted','!=', True)]}"/>
+                            <!-- uncomment after adding for="field_name" -->
+                            <!-- <label string="Draft Invoice" attrs="{'invisible': ['|', ('state','&lt;&gt;','draft'), ('is_submitted','=', True)]}"/>
+                            <label string="Submitted Invoice" attrs="{'invisible': ['|', ('state','&lt;&gt;','draft'), ('is_submitted','!=', True)]}"/> -->
                             <field name="supplier_ref_related" class="oe_inline" attrs="{'invisible': ['|', ('state','&lt;&gt;','draft'), ('is_submitted','!=', True)]}" readonly="1"/>
-                            <label string="Draft Refund" attrs="{'invisible': ['|',('state','&lt;&gt;','draft'), ('type','&lt;&gt;','in_refund')]}"/>
+                            <!-- uncomment after adding for="field_name" -->
+                            <!-- <label string="Draft Refund" attrs="{'invisible': ['|',('state','&lt;&gt;','draft'), ('type','&lt;&gt;','in_refund')]}"/>
                             <label string="Invoice" attrs="{'invisible': ['|',('state', '=', 'draft'), ('type','&lt;&gt;','in_invoice')]}"/>
-                            <label string="Refund" attrs="{'invisible': ['|',('state', '=', 'draft'), ('type','&lt;&gt;','in_refund')]}"/>
+                            <label string="Refund" attrs="{'invisible': ['|',('state', '=', 'draft'), ('type','&lt;&gt;','in_refund')]}"/> -->
                             <field name="number" class="oe_inline"  attrs="{'invisible': [('state', '=', 'draft')]}"/>
                             <field name="is_submitted" invisible="1"/>
                             <field name="is_portal" invisible="1"/>
@@ -486,12 +479,12 @@
                     <div class="oe_title">
                         <h1>
 
-                            <label string="Draft Bill" attrs="{'invisible': ['|', '|', ('state','&lt;&gt;','draft'),('type','&lt;&gt;','in_invoice'), ('is_submitted','=', False)]}"/>
-                            <label string="Submitted Bill" attrs="{'invisible': ['|', '|', ('state','&lt;&gt;','draft'), ('type','in ',['in_refund','in_invoice']), ('is_portal','!=', True), ]}"/>
+                            <!-- <label string="Draft Bill" attrs="{'invisible': ['|', '|', ('state','&lt;&gt;','draft'),('type','&lt;&gt;','in_invoice'), ('is_submitted','=', False)]}"/>
+                            <label string="Submitted Bill" attrs="{'invisible': ['|', '|', ('state','&lt;&gt;','draft'), ('type','in ',['in_refund','in_invoice']), ('is_portal','!=', True), ]}"/> -->
                             <field name="supplier_ref_related" class="oe_inline" attrs="{'invisible': ['|', ('state','&lt;&gt;','draft'), ('is_submitted','!=', True)]}" readonly="1"/>
-                            <label string="Draft Refund" attrs="{'invisible': ['|','|', ('state','&lt;&gt;','draft'), ('type','&lt;&gt;','in_refund'), ('is_submitted','=', True)]}"/>
+                            <!-- <label string="Draft Refund" attrs="{'invisible': ['|','|', ('state','&lt;&gt;','draft'), ('type','&lt;&gt;','in_refund'), ('is_submitted','=', True)]}"/>
                             <label string="Bill" attrs="{'invisible': ['|',('state', '=', 'draft'), ('type','&lt;&gt;','in_invoice')]}"/>
-                            <label string="Refund" attrs="{'invisible': ['|',('state', '=', 'draft'), ('type','&lt;&gt;','in_refund')]}"/>
+                            <label string="Refund" attrs="{'invisible': ['|',('state', '=', 'draft'), ('type','&lt;&gt;','in_refund')]}"/> -->
                             <field name="number" class="oe_inline"  attrs="{'invisible': [('state', '=', 'draft')]}"/>
                         </h1>
                     </div>
@@ -534,6 +527,8 @@
                             <field name="check_total" groups="account_invoice_check_total.group_supplier_inv_check_total"/>
                         </group>
                         <field name="tax_line_ids" attrs="{'readonly': [('state','not in',('portalcreate','draft'))],}" invisible="1"/>
+                        <!--  -->
+                        <field name="avail_supplier_portal" invisible="1"/>
                     </group>
                     <notebook>
                         <page string="Invoice">

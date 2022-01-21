@@ -19,9 +19,9 @@
 #
 ##############################################################################
 
-import hr_expense
-import payment_order_create
-import res_company
+from . import hr_expense
+from . import payment_order_create
+from . import res_company
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
 

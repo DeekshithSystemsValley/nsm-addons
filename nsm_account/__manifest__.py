@@ -57,7 +57,7 @@ Enchances the Accounting Module according to NSM Requirements
 
               'wizard/supplier_merge_pdf_view.xml',
 
-              'report/report_blank_invoice.xml',
+              # 'report/report_blank_invoice.xml',
 
               "views/report.xml",
               "report/report_invoice.xml",
