@@ -45,11 +45,11 @@ defined.
                 'analytic',
                 'hr_expense_operating_unit',
                 # 'account_invoice_2step_validation',
-                 "base_vat",
+                 "base",
     ],
     'data'    : ["security/ir_rule.xml",
                  "views/hr_expense_view.xml",
-                 # "views/res_company_view.xml",
+                 "views/res_company_view.xml",
     ],
     'demo' : [],
     'installable': True
